@@ -135,6 +135,44 @@ body {
   opacity: 0.85;
 }
 
+/* Avatar area */
+.avatar-area {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #e8f4fd 0%, #f0f2f5 100%);
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0;
+}
+
+.teacher-svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.teacher-svg.idle .avatar-body {
+  animation: avatarBreathe 4s ease-in-out infinite;
+}
+
+.teacher-svg.speaking .avatar-body {
+  animation: avatarBreathe 3s ease-in-out infinite;
+}
+
+.teacher-svg.speaking .avatar-head-nod {
+  animation: avatarNod 1.5s ease-in-out infinite;
+}
+
+@keyframes avatarBreathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes avatarNod {
+  0%, 100% { transform: rotate(0deg); transform-origin: 100px 180px; }
+  30% { transform: rotate(1.5deg); transform-origin: 100px 180px; }
+  70% { transform: rotate(-1.5deg); transform-origin: 100px 180px; }
+}
+
 /* Chat window */
 .chat-window {
   flex: 1;
@@ -144,7 +182,7 @@ body {
 
 .welcome-message {
   text-align: center;
-  margin-top: 120px;
+  margin-top: 40px;
   color: #666;
 }
 
