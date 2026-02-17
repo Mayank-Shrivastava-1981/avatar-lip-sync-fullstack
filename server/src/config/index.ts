@@ -7,6 +7,11 @@ export const config = {
     baseUrl: process.env.OLLAMA_BASE_URL || "http://localhost:11434",
     model: process.env.OLLAMA_MODEL || "llama3.2",
   },
+  did: {
+    apiKey: process.env.DID_API_KEY || "",
+    clientKey: process.env.DID_CLIENT_KEY || "",
+    agentId: process.env.DID_AGENT_ID || "",
+  },
   systemPrompt:
     "You are a friendly, knowledgeable school teacher. Explain concepts clearly with examples appropriate for students. Cover all subjects including math, science, history, English, geography, etc. Use simple language and encourage curiosity. If a student seems confused, try explaining in a different way.",
 };

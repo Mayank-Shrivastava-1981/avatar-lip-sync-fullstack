@@ -1,5 +1,26 @@
 import type { ChatSession } from "../types";
 
+export interface DIDConfig {
+  agentId: string;
+  clientKey: string;
+}
+
+export async function getDIDConfig(): Promise<DIDConfig> {
+  const res = await fetch("/api/did/config");
+  if (!res.ok) throw new Error("Failed to fetch D-ID config");
+  return res.json();
+}
+
+export async function createDIDAgent(options: Record<string, unknown> = {}): Promise<unknown> {
+  const res = await fetch("/api/did/agent", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(options),
+  });
+  if (!res.ok) throw new Error("Failed to create D-ID agent");
+  return res.json();
+}
+
 export async function createSession(): Promise<ChatSession> {
   const res = await fetch("/api/chat/new", { method: "POST" });
   if (!res.ok) throw new Error("Failed to create session");
